@@ -1,8 +1,11 @@
+const Task=require('../models/task')
+
 const getAllTask = (req, res) => {
   res.send("completed the setup of controller");
 };
-const postTask = (req, res) => {
-  res.json(req.body);
+const postTask = async (req, res) => {
+  const task=await Task.create(req.body)
+  res.status(201).json({task});
 };
 const getTask = (req, res) => {
   res.json({id:req.params.id})
